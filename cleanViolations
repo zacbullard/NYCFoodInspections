@@ -1,0 +1,40 @@
+/*
+NYC restaurant ratings can be aquired directly from NYC Dept. of Health & Mental Hygiene throught the following government website:
+https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59/data
+
+After importing from the downloaded Excel file into a "webextract" table, we will create a new, cleaned "recent" table of only the most recent rating for each establishment.
+For our purposes, the most important columns are CAMIS (the resturant's unique ID), ZIPCODE, INSPDATE (the datetime-formatted string of the time of inspection), and SCORE.
+Finally, the average score per zipcode will be deposited in a "zipMeans" table for writing to a .csv file later. This data will be used in the following plot:
+https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed
+*/
+
+.mode csv
+.import nyc_inspection_data/WebExtract.txt webextract
+
+--Delete dirty data, where inspection dates return error codes.
+DELETE FROM webextract WHERE INSPDATE IN ('U','P','O','G','F','D');
+
+CREATE TABLE recent AS
+SELECT CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINECODE,MAX(INSPDATE) as INSPDATE,ACTION,VIOLCODE,SCORE,CURRENTGRADE,GRADEDATE,RECORDDATE
+FROM webextract
+GROUP BY CAMIS; 
+
+--Fill in mising data.
+UPDATE recent SET SCORE = 0 WHERE SCORE IS NULL;
+
+--Create a data table of average score per zip, to export and plot for later. 
+--Only consider zip codes with at least 100 ratings.
+CREATE TABLE zipMeans AS
+SELECT * FROM 
+(
+SELECT ZIPCODE, AVG(SCORE) as meanScore, COUNT(SCORE) as zipCount
+FROM recent
+GROUP BY ZIPCODE
+) 
+WHERE zipCount >= 100;
+
+--Write to file.
+.headers on
+.output zipMeans.csv
+SELECT * FROM zipMeans;
+.quit
