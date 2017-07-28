@@ -14,4 +14,6 @@ A formatted database file `cleanedData.db` will be created in the execution dire
 Keep in mind lower scores represent dirtier food!
 [Plotting courtesy of carto.](https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed) 
 
+<table>
 <iframe width="100%" height="520" frameborder="0" src="https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+</table>
