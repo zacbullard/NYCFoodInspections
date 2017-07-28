@@ -11,9 +11,4 @@ sqlite3 cleanedData.db < cleanViolations
 ```
 A formatted database file `cleanedData.db` will be created in the execution directory, as well as a zipMeans.csv file for ease of plotting. 
 
-Keep in mind lower scores represent dirtier food!
-[Plotting courtesy of carto.](https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed) 
-
-<table>
-<iframe width="100%" height="520" frameborder="0" src="https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-</table>
+[A final plot of the summarized scores can be found here.](https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed) Keep in mind lower scores represent dirtier food!
