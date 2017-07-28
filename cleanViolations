@@ -1,4 +1,6 @@
-/*
+/* 
+The following code reads NYC restuarant health code ratings (assumed to exist in nyc_inspection_data/WebExtract.txt) and writes out a cleanedData.db SQL database, as well as a zipMeans.csv file with the mean scores of every zipcode (if they have at least 100 ratings).
+
 NYC restaurant ratings can be aquired directly from NYC Dept. of Health & Mental Hygiene throught the following government website:
 https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59/data
 
