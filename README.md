@@ -11,4 +11,4 @@ sqlite3 cleanedData.db < cleanViolations
 ```
 A formatted database file `cleanedData.db` will be created in the execution directory, as well as a zipMeans.csv file for ease of plotting. 
 
-[A final plot of the summarized scores can be found here.](https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed) Keep in mind lower scores represent dirtier food!
+[A final plot of the summarized scores can be found here.](https://zacbullard.carto.com/builder/28b37ea2-d77f-11e6-b8e8-0ecd1babdde5/embed) Keep in mind lower scores represent more violations! Some areas of the map are blank; we only consider zip codes with at least 100 registered restaurants for scoring.
